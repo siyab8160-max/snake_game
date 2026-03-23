@@ -1,0 +1,16 @@
+div {
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+
+button {
+    background-color: black;
+    color: white;
+    height: 3vh;
+    width: 7vh;
+    border-radius: 1vh;
+}
