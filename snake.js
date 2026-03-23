@@ -9,9 +9,8 @@ let food = { x: 15, y: 10 };
 let score = 0;
 let gamespeed = 200;
 let eatsound = new Audio("mixkit-winning-a-coin-video-game-2069.wav");
-let gameover = new Audio("mixkit-negative-guitar-tone-2324.wav");
-JSON.stringify(localStorage.setItem("highscore",0));
-let highscore=JSON.parse(localStorage.getItem("highscore"));
+JSON.stringify(localStorage.setItem("highscore", 0));
+let highscore = JSON.parse(localStorage.getItem("highscore"));
 
 function drawGrid() {
     ctx.strokeStyle = "#333"; // grid line color (light gray)
@@ -56,8 +55,10 @@ function draw() {
         food.y * gridsize,
         gridsize - 2, gridsize - 2);
 
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "white";
     ctx.fillText("Score " + score, 10, 20);
-    ctx.fillText("HighScore " + highscore, 300, 20);
+    ctx.fillText("HighScore " + highscore, 280, 20);
     drawGrid();
 }
 
@@ -78,8 +79,8 @@ function move() {
     //check if food is eaten 
     if (head.x === food.x && head.y === food.y) {
         score++;
-        if(highscore<score)
-            highscore=score;
+        if (highscore < score)
+            highscore = score;
         if (score % 5 == 0) gamespeed -= 5;
         console.log(gamespeed);
         eatsound.play();
@@ -139,9 +140,8 @@ function gameloop() {
 
     //check if game is over
     if (checkCollision()) {
-        gameover.play();
         alert('Game over ! Score : ' + score);
-        localStorage.setItem("highscore",highscore);
+        localStorage.setItem("highscore", highscore);
         //reset game
         snake = [{ x: 10, y: 10 }];
         direction = "RIGHT";
